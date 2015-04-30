@@ -182,6 +182,11 @@ All $z_{fg}$ are non negative
 $$ z_{fg} \ge 0 \quad \forall f, g \in F, \:f\neq g $$
 
 \subsection{Rewrite to an instance of MCFP}
+
+Intuitively, we want the vertices in the MCFP instance to correspond to the faces of the rectilinear layout. The external face has a demand of $-4$, and all internal faces have a demand of $4$. Inner turns are represented as flow into the vertex, and outer turns as flow out of the vertex.
+
+Turns on breakpoints are represented as edges from one face to another. To represent turns on vertices from the rectilinear layout, we add more vertices to the MCFP intstance; one for each vertex in the rectilinear layout. The demand of such a vertex is always negative, and corresponds to the number of faces that have inner turns on that vertex. For vertex $v$, that's exactly $-\sum_{f \in F}{x_{vf}}$.
+
 \textbf{In this graph:} \\
 Nodes represent face cycles $f \in F$, and nodes $v_i \in V$.\\
 Edges between face and vertex nodes represent 'locked' breakpoints, $x_{fv}$, they are black. Are they locked??\\

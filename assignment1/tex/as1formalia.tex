@@ -1,0 +1,38 @@
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper, margin=12mm]{geometry}
+\usepackage{subcaption}
+\usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage{subfiles}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{parskip}
+\usepackage[english]{babel}
+\usepackage{tikz, pgf}
+\usetikzlibrary{arrows,positioning}
+% \usetikzlibrary{arrows}
+% \pagestyle{empty}
+\newcommand{\degre}{\ensuremath{^\circ}}
+\definecolor{qqwuqq}{rgb}{0,0.39,0}
+\definecolor{qqqqff}{rgb}{0,0,1}
+
+\algnewcommand\Throw[1]{\textbf{throw}\space \mbox{#1}}
+\algdef{SN}{Try}{EndTry}{\textbf{try}}%\textbf{end}}
+\algdef{SN}{Catch}{EndCatch}[1]{\textbf{catch} \( \mbox{#1} \)}{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{AAD - Assignment 1 - Minimum-cost Flow }
+
+\author{
+  Saietz, Maya\\
+  \texttt{100293} \--
+  \texttt{xdk201@alumni.ku.dk}
+  \and
+  Thoudahl, Mads\\
+  \texttt{230884} \--
+  \texttt{qmh332@alumni.ku.dk}
+}

@@ -1,0 +1,72 @@
+\section{Exercise : $b$-flow}
+
+The figures from the assignment is re-created with $b$-flows on the edges in red
+
+\subsection{case (a)}
+
+\begin{figure}[h]
+    \centering
+    \begin {tikzpicture}[-latex, auto, node distance=24mm and 36mm ,on grid ,
+                          semithick ,
+                          main node/.style ={ circle , color=white ,
+                          draw , black , text=black , minimum width =8mm}]
+      \node[main node] (v1) [label=above left:$3$]{$v_1$};
+      \node[main node] (v2) [right=of v1, label=above right:$-2$] {$v_2$};
+      \node[main node] (v3) [below=of v1, label=above left:$4$] {$v_3$};
+      \node[main node] (v4) [right=of v3, label=above right:$2$] {$v_4$};
+      \node[main node] (v5) [node distance=12mm and 18 mm, below right=of v3, label=above:$-7$] {$v_5$};
+  \path[every node/.style={font=\sffamily\small}]
+    (v1) edge node [left] {\begin{color}{red}$2$\end{color}/$4$} (v3)
+         edge node [above] {\begin{color}{red}$0$\end{color}/$1$} (v4)
+    (v2) edge node [above] {\begin{color}{red}$0$\end{color}/$5$} (v1)
+         edge node [right] {\begin{color}{red}$2$\end{color}/$2$} (v4)
+         edge [bend left=75] node [right] {\begin{color}{red}$0$\end{color}/$3$} (v5)
+    (v3) edge node [below] {\begin{color}{red}$0$\end{color}/$4$} (v2)
+         edge node {\begin{color}{red}$0$\end{color}/$3$} (v4)
+    (v4) edge node {\begin{color}{red}$0$\end{color}/$2$} (v5)
+    (v5) edge node {\begin{color}{red}$4$\end{color}/$7$} (v3)
+         edge [bend left=75] node {\begin{color}{red}$3$\end{color}/$6$} (v1)
+    ;
+    \end{tikzpicture}
+    \caption{(a)}
+    \label{fig:ex1a}
+\end{figure}
+
+In Figure (a), the $b$-flow is added in front of the capacities with red numbers
+
+
+\subsection{case (b)}
+
+\begin{figure}[h]
+    \centering
+    \begin {tikzpicture}[-latex, auto, node distance=25mm and 25mm ,on grid ,
+                          semithick ,
+                          main node/.style ={ circle , color=white ,
+                          draw , black , text=black , minimum width =8mm}]
+      \node[main node] (v1) [label=above:$3$]{$v_1$};
+      \node[main node] (v2) [right=of v1, label=above:$1$] {$v_2$};
+      \node[main node] (v3) [below=of v1, label=below:$2$] {$v_3$};
+      \node[main node] (v4) [right=of v3, label=below:$2$] {$v_4$};
+  \path[every node/.style={font=\sffamily\small}]
+    (v1) edge node {$4$} (v3)
+    (v2) edge node {$3$} (v1)
+         edge node {$6$} (v4)
+    (v3) edge node {$2$} (v2)
+         edge node {$3$} (v4)
+    ;
+    \end{tikzpicture}
+    \caption{(b)}
+    \label{fig:ex1b}
+\end{figure}
+
+In figure (b) the nodes $v3$ and $v4$ can be seen as sources, each having an out-flow capacity of $2$, which sums to $4$. The node $v1$ demands $3$ and $v2$ demands $1$ which also sums to $4$, so far so good. If we make a cut seperating the graph in S=$\{v3,v4\}$ and T=$\{ v1, v2\}$, we can see that the summed capacity of the cut (in the direction S$\rightarrow$T) is $2$. This means that the maximum flow (max-flow-min-cut theorem) in the network is $2$, thus not fulfilling the demand of the sinks of $4$ units. Another way of realizing this is that $v4$ cannot send any of its generated surplus in any direction, thus not contributing in the network. 
+
+
+\textbf{Max-flow-min-cut theorem: following statements are equivalent}
+\begin{itemize}
+  \item $f$ is a maximum flow in G
+  \item The residual network $G_f$ contains no augmenting paths
+  \item $|f| = c(S,T)$ for some cut $(S,T)$ of $G$
+\end{itemize}
+
+\textbf{}

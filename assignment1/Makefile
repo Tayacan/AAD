@@ -1,6 +1,7 @@
 all:
 	pdflatex as1.tex
 	pdflatex as1.tex
+	make clean
 
 clean:
-	rm *.aux *.log *.pdf *.out *.toc
+	rm *.aux *.log *.out *.toc

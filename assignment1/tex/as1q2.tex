@@ -175,6 +175,7 @@ To show that this equation holds, we demonstrate it case wise, and rest upon the
 \textbf{Case $v$ has degree 4:} four inner turns are present, yielding $\sum_f{x_{vf}} = 1 + 1 + 1 + 1 = 4$
 
 \subsection{Formulate objective function, and linear program with constraints}
+\label{sec:linprog}
 
 The objective function, which we want to minimize, would be:
 
@@ -202,6 +203,19 @@ $$ z_{fg} \ge 0 \quad \forall f, g \in F, \:f\neq g $$
 Intuitively, we want the vertices in the MCFP instance to correspond to the faces of the rectilinear layout. The external face has a demand of $-4$, and all internal faces have a demand of $4$. Inner turns are represented as flow into the vertex, and outer turns as flow out of the vertex.
 
 Turns on breakpoints are represented as edges from one face to another. To represent turns on vertices from the rectilinear layout, we add more vertices to the MCFP intstance; one for each vertex in the rectilinear layout. The demand of such a vertex is always negative, and corresponds to the number of faces that have inner turns on that vertex. For vertex $v$, that's exactly $-\sum_{f \in F}{x_{vf}}$.
+
+More formally, given a planar embedding of a graph $G = (V, E)$ with boundary cycles $F$, we construct an instance of MCFP $G_{MCFP} = (V', E')$ with capacities $u_e$, costs $c_e$ and demands $b_v$. We construct it like so:
+
+\begin{align*}
+V' =\; &F \cup V \\
+E' =\; &\{(f, g) \in F \times F | f \neq g \land E_{fg} \neq \emptyset\} \\
+    \cup\; &\{(f, v) \in F \times V | v \text{ is part of } f\} \\
+    \cup\; &\{(v, f) \in V \times F | v \text{ is part of } f\} 
+\end{align*}
+
+The demand of the vertex that corresponds to the external face is $-4$, and the demand of the internal faces is 4. The demand for the vertices that corresponds to some vertex $v \in V$ is $-\sum_{f \in F}{x_{vf}}$.
+
+The capacities for face-face edges are infinite, and their costs are all 1. The capacities of edges between a face and a vertex (regardless of direction) is 1, and the cost is 0.
 
 \textbf{In this graph:} \\
 Nodes represent face cycles $f \in F$, and nodes $v_i \in V$.\\

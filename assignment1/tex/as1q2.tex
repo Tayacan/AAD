@@ -1,6 +1,6 @@
 \section{Exercise : Application of MCFP - Rectilinear planar embedding}
 
-\subsection{Values of $z_{fg}$ and $x_{vf}$, total breakpoints, and rectilinear graph}
+\subsection{Values of $z_{fg}$ and $x_{vf}$, total breakpoints, and rectilinear layout}
 
 The values of $z_{fg}$ are given in figure \ref{fig:zfgtable}. The values of $x_{vf}$ are given in figure \ref{fig:xvftable}.
 
@@ -49,10 +49,10 @@ A rectilinear layout of the graph from figure $2$ in the assignment text is give
 \pagebreak
 
 \subsection{Statement of linear constraints and verification}
-$F$: is defined as the set of boundary cycles
 
-One constraint per face $f \in F$
-$$\sum_{v \in V}{x_{vf}} + \sum_{g \neq f \in F}{z_{fg}} - \sum_{g \neq f \in F}{z_{gf}} =
+We define $F$ to be the set of all boundary cycles in the planar embedding of the graph. For each boundary cycle $f \in F$, we get one constraint:
+
+$$\sum_{v \in V}{x_{vf}} + \sum_{g \in F \setminus \{f\}}{z_{fg}} - \sum_{g \in F \setminus \{f\}}{z_{gf}} =
 \begin{cases} -4 & \text{if $f$ is external} \\ 4 & \text{if $f$ is internal}\end{cases}
 $$
 
@@ -66,6 +66,8 @@ $$
   &= (0+1+1+0+1) + (0+0+0) - (2+1+4)  = 3 + 0 - 7 = -4
 \end{align*}
 
+$a$ is the external face, so this is correct.
+
 \textbf{face $e$}
 \begin{align*}
   f_{\text{internal}}: 4
@@ -75,13 +77,24 @@ $$
   &= (1+1-1+1+0) + 2 \cdot (4+0) - (1+2+1+1+1)  = 2 + 2 \cdot 4 - 6 = 4
 \end{align*}
 
+$e$ is an internal face, so this is correct.
+
 
 
 \subsection{Nessecary assumption, show that $\sum x_{vf}$ holds}
 
-The assumption that no vertex has degree larger than 4 comes from the 'planar' embedding, thus in 2 dimensions only 2 orthogonal directions are available, lets call them north/south, which we define to be parallel with the y-axis, and east/west defined parallel to the x-axis. When these directions are relative to a vertex, this number doubles, from the point of view of the vertex there are now 4 directions to go, or \textit{degrees}: north, south east and west. If we were to use a 'spatial' embedding, an extra dimension would be added, allowing for 6 degrees (adding up and down).
+The assumption that no vertex has degree larger than 4 comes from the requirement that the rectilinear layout uses only vertical and horizontal lines. For any given vertex, we can have two horizontal edges (one going left from the vertex, and one going right) and two vertical (one going up, one going down). If there were more edges, we would be unable to draw them using only horizontal and vertical lines.
 
-to be done:show that $\sum{x_{vf}}$ holds for all vertices
+We now want to show that the following equation holds for any vertex $v$ in a rectilinear layout:
+
+$$
+  \sum_{f \in F}{x_{vf}} =
+  \begin{cases}
+    0 & \text{if $v$ has degree 2} \\
+    2 & \text{if $v$ has degree 3} \\
+    4 & \text{if $v$ has degree 4}
+  \end{cases}
+$$
 
 To show that this equation holds, we demonstrate it case wise, and rest upon the fact that mirroring in any or both of the principal axis, along with rotating around the vertex in either direction (clockwise or counterclockwise) with any multiplum of $\frac{\pi}{2}$ yields the same result, covering all the possible cases in rectilinear planar embedding.
 \begin{figure}[h]
@@ -163,16 +176,17 @@ To show that this equation holds, we demonstrate it case wise, and rest upon the
 
 \subsection{Formulate objective function, and linear program with constraints}
 
-The objective function would be Minimizing
-$$ \sum_{f\in F} \sum_{g \in F \setminus{\{f\} }} {z_{fg} + z_{gf} }$$
+The objective function, which we want to minimize, would be:
 
-subject to the following constraints
+$$\sum_{f\in F} \sum_{g \in F \setminus{\{f\} }} {z_{fg} + z_{gf} }$$
 
-For each face $f \in F$ (from ex 2.2)
-$$\sum_{v \in V}{x_{vf}} + \sum_{g \neq f \in F}{z_{fg}} - \sum_{g \neq f \in F}{z_{gf}} = \begin{cases} -4 & \text{if $f$ is external} \\ 4 & \text{if $f$ is internal}\end{cases}
+And we wish to minimize it subject to the following constraints:
+
+For each face $f \in F$ (from ex 2.2):
+$$\sum_{v \in V}{x_{vf}} + \sum_{g \in F \setminus \{f\}}{z_{fg}} - \sum_{g \in F \setminus \{f\}}{z_{gf}} = \begin{cases} -4 & \text{if $f$ is external} \\ 4 & \text{if $f$ is internal}\end{cases}
 $$
 
-For each vertex $v \in V$ (from ex 2.3)
+For each vertex $v \in V$ (from ex 2.3):
 $$  \sum_{f \in F} {x_{vf}} = \begin{cases}
                                 0 & \text{if $v$ has degree } 2 \\
                                 2 & \text{if $v$ has degree } 3 \\
@@ -180,7 +194,7 @@ $$  \sum_{f \in F} {x_{vf}} = \begin{cases}
                               \end{cases}
 $$
 
-All $z_{fg}$ are non negative
+All $z_{fg}$ are non negative:
 $$ z_{fg} \ge 0 \quad \forall f, g \in F, \:f\neq g $$
 
 \subsection{Rewrite to an instance of MCFP}

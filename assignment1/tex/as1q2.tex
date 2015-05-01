@@ -2,8 +2,10 @@
 
 \subsection{Values of $z_{fg}$ and $x_{vf}$, total breakpoints, and rectilinear graph}
 
-$z_{fg}$ = \# inner turns of edges between two faces $E_{fg}$
+The values of $z_{fg}$ are given in figure \ref{fig:zfgtable}. The values of $x_{vf}$ are given in figure \ref{fig:xvftable}.
 
+\begin{figure}
+\centering
 \begin{tabular}{l|lllll}
 $z_{fg}$ & $a$ & $b$ & $c$ & $d$ & $e$  \\ \hline
 $a$ & - & $z_{ab} = 0$ & $z_{ac} = 0$ & $z_{ad} = 0$ & $z_{ae} = 0$ \\
@@ -12,18 +14,11 @@ $c$ & $z_{ca} = 1$ & $z_{cb} = 1$ & - & $z_{cd} = 0$ & $z_{ce} = 0$ \\
 $d$ & $z_{ad} = 0$ & $z_{db} = 1$ & $z_{dc} = 0$ & - & $z_{de} = 2$ \\
 $e$ & $z_{ea} = 4$ & $z_{eb} = 0$ & $z_{ec} = 0$ & $z_{ed} = 0$ & - \\
 \end{tabular}
+\caption{\label{fig:zfgtable}Values of $z_{fg}$ for all boundary cycles $f$ and $g$ in figure 3 of the assignment text.}
+\end{figure}
 
-
-The number of breakpoints on an edge between two facing cycles are written as $z_{fg} + z_{gf}$.
-The total number of breakpoints in the graph of figure 3 is
-$$ \sum_{f\in F} \sum_{g \in F \setminus{\{f\} }} {z_{fg} + z_{gf} }= 13$$
-
-
-$x_{v_ig} = \begin{cases} 1 & \text{if vertex is on cycle edge and inner turn} \\
-                         -1 & \text{if vertex is on cycle and outer turn} \\
-                         0 & \text{otherwise} \end{cases}
-$                         = \# inner turns of edges of $E_{fg}$
-
+\begin{figure}
+\centering
 \begin{tabular}{l|lllllll}
 $x_{vf}$ & $a$ & $b$ & $c$ & $d$ & $e$ \\ \hline
 $v_1$ & $x_{v_1a} = 0 $ & $x_{v_1b} = 1 $ & $x_{v_1c} = 1 $ & $x_{v_1d} = 0 $ & $x_{v_1e} = 0 $ \\
@@ -34,14 +29,21 @@ $v_5$ & $x_{v_5a} = 1 $ & $x_{v_5b} = 0 $ & $x_{v_5c} = 0 $ & $x_{v_5d} = 0 $ & 
 $v_6$ & $x_{v_6a} = 1 $ & $x_{v_6b} = 1 $ & $x_{v_6c} = 0 $ & $x_{v_6d} = 1 $ & $x_{v_6e} = 1 $ \\
 $v_7$ & $x_{v_7a} = 0 $ & $x_{v_7b} = 0 $ & $x_{v_7c} = 0 $ & $x_{v_7d} = 0 $ & $x_{v_7e} = 0 $ \\
 \end{tabular}
+\caption{\label{fig:xvftable}Values of $x_{vf}$ for all boundary cycles $f$ and vertices $v$ in figure 3 of the assignment text.}
+\end{figure}
 
+The total number of breakpoints in the graph of figure 3 is:
 
+$$ \sum_{f\in F} \sum_{g \in F \setminus{\{f\} }} {z_{fg} + z_{gf} }= 13$$
 
-\begin{figure}[h!]
+A rectilinear layout of the graph from figure $2$ in the assignment text is given in figure \ref{fig:reclayout}.
+
+\begin{figure}
  \centering
  \includegraphics[keepaspectratio=true, width=80mm]{img/rectilinear_graph.png}
  % rectilinear graph.png: 590x429 pixel, 95dpi, 15.77x11.47 cm, bb=0 0 447 325
- \caption{rectilinear graph of figure 2 in assignment}
+ \caption{Rectilinear graph of figure 2 in assignment.}
+ \label{fig:reclayout}
 \end{figure}
 
 \pagebreak

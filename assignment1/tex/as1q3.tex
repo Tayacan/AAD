@@ -1,4 +1,13 @@
 
 \section{Exercise : 3}
 
+\subsection{Finite capacities (part 1)}
+For any edge $e = (u, v)$ with $l_e = -\infty$ and $u_e = \infty$, we remove $e$, create a dummy vertex $u'$, and create new edges $(u, v)$, $(v, u')$ and $(u', u)$. These edges get a lower capacity of $0$ and an upper capacity of $\infty$. As far as cost goes, $(u, v)$ gets cost $c_e$, $(v, u')$ gets cost $-c_e$ and $(u', u)$ gets cost 0.
 
+\subsection{Finite capacities (part 2)}
+For any edge $e = (u, v)$ with $l_e = -\infty$, we remove it and create a new edge $(v, u)$ with lower capacity $-u_e$ and upper capacity $\infty$.
+
+\subsection{Getting rid of lower capacities}
+
+
+\subsection{Number of vertices and edges}

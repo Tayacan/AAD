@@ -209,8 +209,8 @@ More formally, given a planar embedding of a graph $G = (V, E)$ with boundary cy
 \begin{align*}
 V' =\; &F \cup V \\
 E' =\; &\{(f, g) \in F \times F | f \neq g \land E_{fg} \neq \emptyset\} \\
-    \cup\; &\{(f, v) \in F \times V | v \text{ is part of } f\} \\
-    \cup\; &\{(v, f) \in V \times F | v \text{ is part of } f\} 
+    \cup\; &\{(f, v) \in F \times V | f \text{ makes an outer turn in } v\} \\
+    \cup\; &\{(v, f) \in V \times F | f \text{ makes an inner turn in } v\} 
 \end{align*}
 
 The demand of the vertex that corresponds to the external face is $-4$, and the demand of the internal faces is 4. The demand for the vertices that corresponds to some vertex $v \in V$ is $-\sum_{f \in F}{x_{vf}}$.

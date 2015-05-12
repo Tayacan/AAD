@@ -8,6 +8,10 @@ For any edge $e = (u, v)$ with $l_e = -\infty$ and $u_e = \infty$, we remove $e$
 For any edge $e = (u, v)$ with $l_e = -\infty$, we remove it and create a new edge $(v, u)$ with lower capacity $-u_e$ and upper capacity $\infty$.
 
 \subsection{Getting rid of lower capacities}
-
+For any edge $e = (u, v)$ with $l_e \neq 0$ and $u_e = y$, we remove $e$, create a dummy vertex $u'$, and create new edges $(u, v)$, $(v, u')$ and $(u', u)$. These edges get a lower capacity of $0$.
+Upper capacities are given by $u_{(u,v)} = u_e$, $u_{(v,u')} = -l_e$, $u_{(u',u)} = -l_e$.
+As far as cost goes, $(u, v)$ gets cost $c_e$, $(v, u')$ gets cost $-c_e$ and $(u', u)$ gets cost 0.
 
 \subsection{Number of vertices and edges}
+In the operations done, modifying $I_0 \rightarrow I_1 \rightarrow I_2 \rightarrow I_3$, for any edge $e = (u,v)$, at most one new vertex and two new edges are created, thus a constant factor of edges and vertices are added to the graph, upper bounding these numbers to $\mathcal{O}(V+E)$.
+Any edge touched in $I_0 \rightarrow I_1$, satisfies the conditions demanded of $I_3$ thus it is not touched again.

@@ -1,2 +1,0 @@
-COLLIDE! There is no collision yet.
-There is totally still no collision yet.

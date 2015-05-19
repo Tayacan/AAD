@@ -1,1 +1,1 @@
-There is no collision yet.
+COLLIDE! There is no collision yet.

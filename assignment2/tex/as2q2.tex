@@ -30,4 +30,10 @@ Now, we know that both of the sets have size $k$, because they are bottom-$k$ sa
 \paragraph*{(b)}
 $A \cap B \cap S^k_h(A \cup B) = S^k_h(A) \cap S^k_h(B) \cap S^k_h(A \cup B)$
 
+We'll start by showing that $S^k_h(A) \cap S^k_h(B) \cap S^k_h(A \cup B) \subseteq A \cap B \cap S^k_h(A \cup B)$.
 
+An element $x \in S^k_h(A) \cap S^k_h(B) \cap S^k_h(A \cup B)$ is in $S^k_h(A)$, which means that it is also in $A$, and it is in $S^k_h(B)$, which means that it is also in $B$, and it is in $S^k_h(A \cup B)$, which is a requirement for both sides of the equation. Therefore, it is in $A \cap B \cap S^k_h(A \cup B)$.
+
+We then show that $A \cap B \cap S^k_h(A \cup B) \subseteq S^k_h(A) \cap S^k_h(B) \cap S^k_h(A \cup B)$.
+
+For some $x \in A \cap B \cap S^k_h(A \cup B)$, $x$ is also in $S^k_h(A \cup B)$. If we look at (a), this is equivalent with saying that $x \in S^k_h(S^k_h(A) \cup S^k_h(B))$, which also tells us that $x$ is either in $S^k_h(A)$ or in $S^k_h(B)$. Now, because $x$ is in both $A$ and $B$, it must also be in both $S^k_h(A)$ and $S^k_h(B)$ -- if it was in $S^k_h(A)$, but not in $S^k_h(B)$, then $S^k_h(B)$ would consist of $k$ elements that hash to smaller values that $x$ does, and then $x$ would \emph{not} be in $S^k_h(S^k_h(A) \cup S^k_h(B))$, which would be a contradiction. The same happens if $x$ is in $S^k_h(B)$, but not in $S^k_h(A)$. This concludes the proof.

@@ -37,3 +37,42 @@ An element $x \in S^k_h(A) \cap S^k_h(B) \cap S^k_h(A \cup B)$ is in $S^k_h(A)$,
 We then show that $A \cap B \cap S^k_h(A \cup B) \subseteq S^k_h(A) \cap S^k_h(B) \cap S^k_h(A \cup B)$.
 
 For some $x \in A \cap B \cap S^k_h(A \cup B)$, $x$ is also in $S^k_h(A \cup B)$. If we look at (a), this is equivalent with saying that $x \in S^k_h(S^k_h(A) \cup S^k_h(B))$, which also tells us that $x$ is either in $S^k_h(A)$ or in $S^k_h(B)$. Now, because $x$ is in both $A$ and $B$, it must also be in both $S^k_h(A)$ and $S^k_h(B)$ -- if it was in $S^k_h(A)$, but not in $S^k_h(B)$, then $S^k_h(B)$ would consist of $k$ elements that hash to smaller values that $x$ does, and then $x$ would \emph{not} be in $S^k_h(S^k_h(A) \cup S^k_h(B))$, which would be a contradiction. The same happens if $x$ is in $S^k_h(B)$, but not in $S^k_h(A)$. This concludes the proof.
+
+\paragraph*{(c)}
+We can do both union and intersection of sorted sets in linear time. Finding the size of a set is either constant or linear time, depending on implementation, so all in all, we get linear time.
+
+The algorithm for union of two sorted sets is as follows:
+
+\begin{verbatim}
+Union(A, B)
+  Let C be an empty set.
+  Repeat until A and B are both empty:
+    Let x be the first element of A, and y be the first element of B.
+    If x = y:
+      Add x to the end of C
+      Remove x from A and y from B
+    Else if x < y:
+      Add x to C
+      Remove x from A
+    Else:
+      Add y to C
+      Remove y from B
+  Return C
+\end{verbatim}
+
+The algorithm for intersection of two sorted sets is as follows:
+
+\begin{verbatim}
+Intersection(A, B)
+  Let C be an empty set.
+  Repeat until A and B are both empty:
+    Let x be the first element of A, and y be the first element of B.
+    If x = y:
+      Add x to the end of C
+      Remove x from A and y from B
+    Else if x < y:
+      Remove x from A
+    Else:
+      Remove y from B
+  Return C
+\end{verbatim}

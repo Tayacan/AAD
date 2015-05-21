@@ -19,8 +19,15 @@ Given two bottom-$k$ samples, $S^k_h(A)$ and $S^k_h(B)$, we can prove that:
 \paragraph*{(a)}
 $S^k_h(A \cup B) = S^k_h(S^k_h(A) \cup S^k_h(B))$
 
-We'll start by showing that $S^k_h(A \cup B) \subseteq S^k_h(S^k_h(A) \cup S^k_h(B))$
+We'll start by showing that $S^k_h(A \cup B) \subseteq S^k_h(S^k_h(A) \cup S^k_h(B))$. We'll do this using a proof by contradiction.
+
+Given some $x \in S^k_h(A \cup B)$, assume $x \notin S^k_h(S^k_h(A) \cup S^k_h(B))$.
+
+By that assumption, there are at least $k$ elements from $S^k_h(A) \cup S^k_h(B)$ that has to smaller values than $x$. All of these elements also appear in $A \cup B$, which means that they are better candidates for $S^k_h(A \cup B)$ than $x$ is. This is a contradiction.
+
+Now, we know that both of the sets have size $k$, because they are bottom-$k$ samples. If two sets have the same size, and one is a subset of the other, then they must be equivalent -- there cannot be an element in $S^k_h(S^k_h(A) \cup S^k_h(B))$ that does not appear in $S^k_h(A \cup B)$, because if there were, $S^k_h(S^k_h(A) \cup S^k_h(B))$ would be larger.
 
 \paragraph*{(b)}
 $A \cap B \cap S^k_h(A \cup B) = S^k_h(A) \cap S^k_h(B) \cap S^k_h(A \cup B)$
+
 

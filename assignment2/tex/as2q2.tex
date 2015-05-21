@@ -1,5 +1,7 @@
 \section{Bottom $k$-sampling}
 
+\subsection{Frequency estimation}
+
 \paragraph{Exercise 2}
 We want to prove the following:
 
@@ -8,3 +10,17 @@ We want to prove the following:
 \]
 
 For each $x \in C$, the probablility $Pr[x \in S^k_h(A)]$ that $x$ is in the bottom-$k$ sample of $A$ is $\frac{k}{|A|}$. Thus, we expect $\frac{|C|k}{|A|}$ elements from $C$ to appear in $S^k_h(A)$, or in other words, $E[|C \cap S^k_h(A)|] = \frac{|C|k}{|A|}$. Divide by $k$, and we get $\frac{|C|}{|A|}$. 
+
+\subsection{Similarity estimation}
+
+\paragraph{Exercise 4}
+Given two bottom-$k$ samples, $S^k_h(A)$ and $S^k_h(B)$, we can prove that:
+
+\paragraph*{(a)}
+$S^k_h(A \cup B) = S^k_h(S^k_h(A) \cup S^k_h(B))$
+
+We'll start by showing that $S^k_h(A \cup B) \subseteq S^k_h(S^k_h(A) \cup S^k_h(B))$
+
+\paragraph*{(b)}
+$A \cap B \cap S^k_h(A \cup B) = S^k_h(A) \cap S^k_h(B) \cap S^k_h(A \cup B)$
+

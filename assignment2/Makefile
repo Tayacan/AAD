@@ -4,4 +4,4 @@ all:
 	make clean
 
 clean:
-	rm *.aux *.log *.out *.toc tex/*.log tex/*.toc tex/*.aux tex/*.out
+	rm *.aux *.log *.out *.toc 

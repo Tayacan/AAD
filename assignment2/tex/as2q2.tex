@@ -11,6 +11,48 @@ We want to prove the following:
 
 For each $x \in C$, the probablility $Pr[x \in S^k_h(A)]$ that $x$ is in the bottom-$k$ sample of $A$ is $\frac{k}{|A|}$. Thus, we expect $\frac{|C|k}{|A|}$ elements from $C$ to appear in $S^k_h(A)$, or in other words, $E[|C \cap S^k_h(A)|] = \frac{|C|k}{|A|}$. Divide by $k$, and we get $\frac{|C|}{|A|}$. 
 
+\paragraph{Exercise 3}
+
+\paragraph*{(a)} \textit{What kind of data structure would you use to maintain the bottom-$k$ samples as the keys arrive in a stream?}
+
+We would prefer a max-heap combined with a counter to ensure that no more than $k$ elements are stored.
+pseudo code to illustrate is put in Algorithm \ref{alg:bottom-k}.
+
+\begin{algorithm}
+  % \State \Comment \Call \While \Endwhile \Return
+  \caption{bottom-$k$ ($h, x_{stream}$)}
+  \label{alg:bottom-k}
+  \begin{algorithmic}[1]
+  \State H $\gets$ \Call{MaxHeap}{~}%{$x_0, h(x_0)$}
+    \Comment Initiate empty max-heap $\MO(1)$
+  \While{$x_i$}
+    \If {$i < k$}
+      \State \Call{H.insert}{$x_i$} \Comment $\MO(\log_2 k)$
+    \Else
+      \If {$h(x) < h(\Call{H.getmax}{~}})$ \Comment $\MO(1)$
+        \State \Call{H.delete-max}{~} \Comment $\MO(\log_2 k)$
+        \State \Call{H.insert}{$x_i$} \Comment $\MO(\log_2 k)$
+      \EndIf
+    \EndIf
+  \EndWhile
+  \end{algorithmic}
+\end{algorithm}
+
+\paragraph*{(b)} \textit{How long time would it take to process the next key $x_{i+1}$?}
+
+Case $h(x_{i+1}) \geq H_{max}$, ignore $x_{i+1}$, thus Cost of operation is $\MO(1)$.
+
+Case $h(x_{i+1}) < H_{max}$ do H.delete-max, H.insert $x_{i+1}$.
+
+\begin{tabular}{llc}
+Cost of operations are: & & Result \\ \hline
+Binary Max-Heap:& $\MO(1) + \Theta(\log_2 k) + \Theta(\log_2 k)$ & $\Theta(\log_2 k)$ \\
+Fibb. Max-Heap: &$\MO(1) + \MO(\log k) + \MO(1)$ & $\MO(\log k)$ Amortized.
+\end{tabular}
+
+
+If overwhelming large $k$, use fibonacci heap, else use binary heap, as constants seem to be lower in binary heap. Actual testing and timings in implementation would be useful.
+
 \subsection{Similarity estimation}
 
 \paragraph{Exercise 4}

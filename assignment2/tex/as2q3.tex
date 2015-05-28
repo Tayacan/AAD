@@ -1,4 +1,48 @@
 \section{Bottom $k$-sampling with strong universality}
 
-lala 
+\paragraph{Exercise 5}
+lala
+
+
+\vspace{50mm}
+
+\textbf{lemma 1:} $Pr\left[ |X - \mu| \geq r\sqrt{\mu} \right] \leq \frac{1}{r^2}$, given $p \in \left[0,1\right)$, and $A \subseteq U$, $X = |S_{h,p}(A)|$.
+Then  $\mu = \E\left[ X \right] = p n$, $\sigma^2 = Var\left[ X \right] = (1-p)\mu \leq \mu$.
+
+
+\paragraph{Exercise 6} - Use \textit{lemma 1} to prove that $)_{(I)} = Pr\left[ X_A < k \right] < \frac{1}{r^2}$
+
+\begin{align}
+  Pr \left[ X_A < k \right] &< \frac{1}{r^2} \quad \text{loosing the subscript on X} \\
+  Pr \left[ X < \mu(1-\frac{r}{\sqrt{k}}) \right] &< \frac{1}{r^2}  \\
+  Pr \left[ X < \mu -\frac{r \mu}{\sqrt{k}} \right] &< \frac{1}{r^2}  \\
+  Pr \left[ \mu - X > \frac{r \mu}{\sqrt{k}} \right] &< \frac{1}{r^2}  \\
+  Pr \left[ |\mu - X| > \frac{r \mu}{\sqrt{k}} \right] &< \frac{1}{r^2}  \\
+  Pr \left[ |\mu - X| > \frac{r \mu}{\sqrt{k}} \right] &< \frac{1}{r^2}  \\
+  Pr \left[ |X - \mu| \geq r \sqrt{\mu} \right] &< \frac{1}{r^2} \text{ using (\ref{eq:mucalc}) to assume } \mu > k
+\end{align}
+
+using the following
+\begin{align}
+  &\mu = \frac{k}{(1-a)}, a\leq\frac{1}{3}  \quad \Rightarrow \quad  \mu \geq \frac{k}{1-1/3} = \frac{2k}{3} \\
+  &r \sqrt{\mu} > \frac{\mu}{\sqrt{k}} \quad \Rightarrow \quad \sqrt{\mu} > \frac{\mu}{\sqrt{k}} \quad \Rightarrow \quad \sqrt{\mu} \sqrt{k} > \mu \quad \Rightarrow \quad \mu > k \label{eq:mucalc}
+\end{align}
+
+
+\paragraph{Exercise 7} - Use \textit{lemma 1} to prove that $P_{(II)} = Pr\left[ X > (1+b)\mu \right] < \frac{1}{r^2}$
+\begin{align}
+  Pr\left[  X > (1+b)\mu  \right] &< \frac{1}{r^2} \\
+  Pr\left[  X > (1+ \frac{r}{\sqrt{fk}}) \frac{fk}{(1-a)} \right] &< \frac{1}{r^2} \\
+  Pr\left[  X > \mu + r \frac{\mu}{\sqrt{fk}}  \right] &< \frac{1}{r^2} \text{using (\ref{eq:acalc}) to assume } fk < \mu \\
+  Pr \left[ |X - \mu| \geq r \sqrt{\mu} \right] &< \frac{1}{r^2}
+\end{align}
+
+using the following
+\begin{align}
+  r \sqrt{\mu} < r \mu / \sqrt{fk}
+  \quad \Rightarrow \quad  \sqrt{\mu} < \mu / \sqrt{fk}
+  \quad \Rightarrow \quad  \sqrt{fk} < \frac{\mu}{\sqrt{\mu}}
+  \quad \Rightarrow \quad  fk < \mu \text{ which is given } \label{eq:acalc}
+\end{align}
+
 
